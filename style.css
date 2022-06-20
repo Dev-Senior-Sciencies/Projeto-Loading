@@ -1,0 +1,112 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+header h1 {
+    position: relative;
+    color: #E5FFDE;
+    animation: text 8s linear infinite;
+    top: 0px;
+    left: 125px;
+
+}
+
+@keyframes text {
+    100%{
+     transform: rotate3d(1, 1, 1, 360deg)
+     matrix3d(1,0,0,0,0,1,6,0,0,0,1,0,50,100,0,1.1);
+    }
+    0%{
+     transform: rotate3d(1, 1, 1, 0deg)
+     matrix3d(1,0,0,0,0,1,6,0,0,0,1,0,50,100,0,1.1);
+    }
+}
+
+header h1::before {
+    content: '';
+    position: absolute;
+    top: calc(50% - 7.5px);
+    width: 15px;
+    height: 15px;
+    color: #0B0014;
+    transform: scale(0.1);
+
+}
+
+section {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: #0B0014;
+    animation: animateColor 8s linear infinite;
+}
+
+@keyframes animateColor {
+    0%{
+        filter: hue-rotate(0deg);
+    }
+    100%{
+        filter: hue-rotate(360deg);
+    }
+}
+
+section .container {
+    display: flex;
+}
+
+section .container .circle {
+    position: relative;
+    width: 150px;
+    height: 150px;
+    margin: 0 -7.5px;
+}
+
+section .container .circle span {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: rotate(calc(18deg * var(--i)));
+    /* 360 / 20 = 18 deg */
+}
+
+section .container .circle span::before {
+    content: '';
+    position: absolute;
+    right: 0;
+    top: calc(50% - 7.5px);
+    width: 15px;
+    height: 15px;
+    background: #E5FFDE;
+    border-radius: 50%;
+    box-shadow: 0 0 10px #305252,
+    0 0 20px #305252,
+    0 0 40px #305252,
+    0 0 80px #305252,
+    0 0 100px #305252;
+    transform: scale(0.1);
+    animation: animate 4s linear infinite;
+    animation-delay: calc(0.1s * var(--i));
+}
+
+@keyframes animate {
+    0% {
+        transform: scale(1);
+    }
+    50%,100% {
+        transform: scale(0.1);
+    }
+}
+
+section .container .circle:nth-child(2) {
+    transform: rotate(-180deg);
+}
+
+section .container .circle:nth-child(2) span::before {
+    animation-delay: calc(-0.1s * var(--i));
+
+}
